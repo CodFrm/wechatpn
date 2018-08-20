@@ -39,6 +39,6 @@ class eventMsgController extends baseMsgController {
      * @return string
      */
     protected function unsubscribe() {
-        return '取消你妹';
+        return '';
     }
 }

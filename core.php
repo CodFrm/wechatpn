@@ -61,6 +61,12 @@ class core {
         if (!isset($this->post->MsgType)) {
             die('error');
         }
+        //初始化数据库链接
+        \lib\db::init($this->config['db']['host'], $this->config['db']['user'],
+            $this->config['db']['pwd'], $this->config['db']['db'],
+            $this->config['db']['prefix']
+        );
+
         $class = 'controller\\' . $this->post->MsgType->__toString() . 'MsgController';
         new $class($this->post);
     }
