@@ -16,8 +16,22 @@ class core {
     protected $post;
 
     public function __construct() {
+        static::$instance = $this;
         $this->config = require_once 'config.php';
         spl_autoload_register([$this, 'autoload']);
+    }
+
+    /**
+     * @var core
+     */
+    public static $instance;
+
+    /**
+     * 调用实例
+     * @return core
+     */
+    public static function app() {
+        return static::$instance;
     }
 
     /**
@@ -66,7 +80,7 @@ class core {
             $this->config['db']['pwd'], $this->config['db']['db'],
             $this->config['db']['prefix']
         );
-
+        \lib\db::query('set names utf8');
         $class = 'controller\\' . $this->post->MsgType->__toString() . 'MsgController';
         new $class($this->post);
     }

@@ -19,6 +19,8 @@ class textMsgController extends baseMsgController {
     protected function msgdeal() {
         // TODO: Implement msgdeal() method.
         if (!isset($this->post->Content)) return;
+        $content = $this->post->Content->__toString();
+
         return $this->post->Content->__toString();
     }
 

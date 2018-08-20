@@ -8,5 +8,6 @@ return [
         'pwd' => '',
         'db' => 'demo',
         'prefix' => ''
-    ]
+    ],
+    'default_reply'=>'默认回复内容'
 ];
