@@ -80,13 +80,13 @@ abstract class baseMsgController {
      * @return array
      */
     protected function replyDefault(array $array): array {
-        if (isset($array['ToUserName'])) {
+        if (!isset($array['ToUserName'])) {
             $array['ToUserName'] = $this->post->FromUserName->__toString();
         }
-        if (isset($array['FromUserName'])) {
+        if (!isset($array['FromUserName'])) {
             $array['FromUserName'] = $this->post->ToUserName->__toString();
         }
-        if (isset($array['CreateTime'])) {
+        if (!isset($array['CreateTime'])) {
             $array['CreateTime'] = time();
         }
         return $array;
